@@ -58,3 +58,71 @@ SELECT SUM(D.CAN_VEN * D.PRE_VEN) AS [SUBTOTAL ACUMULADO]
     FROM DETALLE_FACTURA D
 GO
 ```
+
+## MAX
+Permite devolver el maximo valor de un campo numerico encontrado en un campo numerico encontrado en una tabla dependiendo de una determinada condicion.
+#### Formato:
+```sql
+SELECT MAX (CAMPO) 
+    FROM <TABLA>
+        WHERE <CONDICION>
+```
+##### Ejemplos: 
++ Mostrar el producto mas caro que registrado en la tienda
+```sql
+SELECT MAX(P.PRE_PRO) AS [PRECIO MAXIMO]
+    FROM PRODUCTO P
+GO
+```
++ Mostrar el producto mas caro que registra la tienda con respecto a los productos importados
+```sql
+SELECT MAX(P.PRE_PRO) AS [PRECIO MAXIMO]
+    FROM PRODUCTO P
+        WHERE IMP_PRO = 'V'
+GO
+```
+
+## MIN
+Permite devolver el valor minimo de un campo numerico encontrado en una tabla dependiendo de un determinado condicion.
+#### Formato:
+```sql
+SELECT MIN( CAMPO ) 
+    FROM <NOMBRE_TABLA>
+        WHERE <CONDICION>
+```
+##### Ejemplo:
++ Mostrar el producto con el precio mas bajo que registre la tienda.
+```sql
+SELECT MIN(P.PRE_PRO) AS [PRECIO MINIMO]
+    FROM PRODUCTO P
+GO
+```
++ Mostrar el precio mas bajo que registra la tienda con respecto a los productos no importados.
+```sql
+SELECT MIN(P.PRE_PRO) AS [PRECIO MINIMO]
+    FROM PRODUCTO P
+        WHERE IMP_PRO = 'F'
+GO
+```
+## AVG
+Permite devolver el **promedio** de una columna de tipo numerico bajo un determinado criterio.
+#### Formato:
+```sql
+SELECT AVG( CAMPO ) 
+    FROM <NOMBRE_TABLA>
+        WHERE <CONDICION>
+```
+##### Ejemplos:
++ Mostrar el promedio de precios de los productos
+```sql
+SELECT AVG(P.PRE_PRO) AS [PROMEDIO PRECIO]
+    FROM PRODUCTO P
+GO
+```
++ Mostrar el promedio de stock actual solo de aquellos productos importados.
+```sql
+SELECT AVG(P.PRE_PRO) AS [PRECIO PROMEDIO]
+    FROM PRODUCTO P
+        WHERE P.IMPO_PRO = 'V'
+GO
+```
